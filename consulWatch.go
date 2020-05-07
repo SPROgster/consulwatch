@@ -177,7 +177,6 @@ func (w *ConsulWatched) setDefaults() error {
 		w.ErrChan = make(chan error)
 	}
 
-
 	// Default wait timeout
 	if w.WaitTimeout == 0 {
 		w.WaitTimeout = WaitTimeout
@@ -216,8 +215,8 @@ func (w *ConsulWatched) Stop() {
 	w.stopChan <- true
 	for i, v := range watchers {
 		if v == w {
-			watchers[i] = watchers[len(watchers) - 1]
-			watchers = watchers[:len(watchers) - 1]
+			watchers[i] = watchers[len(watchers)-1]
+			watchers = watchers[:len(watchers)-1]
 			return
 		}
 	}
@@ -269,7 +268,7 @@ func (w *ConsulWatched) process(pairs api.KVPairs) error {
 			w.updateIndex[key] = p.ModifyIndex
 		}
 
-		m[key] = string(p.Value)
+		m[key] = p.Value
 	}
 
 	// Remove deleted entries from watcher list
