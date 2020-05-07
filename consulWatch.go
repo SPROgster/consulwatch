@@ -269,7 +269,7 @@ func (w *ConsulWatched) process(pairs api.KVPairs) error {
 			w.updateIndex[key] = p.ModifyIndex
 		}
 
-		m[key] = string(p.Value)
+		m[key] = p.Value
 	}
 
 	// Remove deleted entries from watcher list
