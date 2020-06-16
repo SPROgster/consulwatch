@@ -58,6 +58,8 @@ func main() {
 			fmt.Printf("created: %v\n", a)
 		case a := <-watched.DeleteChan:
 			fmt.Printf("deleted: %v\n", a)
+        case err := <-watched.ErrChan:
+            log.Print(err)
 		}
 	}
 }
