@@ -248,6 +248,10 @@ func (w *ConsulWatched) process(pairs api.KVPairs) error {
 	for _, p := range pairs {
 		// Trim the Prefix off our key first
 		key := strings.TrimPrefix(p.Key, w.Prefix)
+		// Ignore . path
+		if key == "" {
+			continue
+		}
 
 		m := created
 
