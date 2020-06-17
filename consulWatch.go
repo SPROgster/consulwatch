@@ -42,6 +42,8 @@ func (w *ConsulWatched) Watch() error {
 	stopCh := make(chan bool)
 	w.stopChan = stopCh
 
+	w.updateIndex = make(map[string]uint64)
+
 	errCh := w.ErrChan
 
 	pairCh := make(chan api.KVPairs)
