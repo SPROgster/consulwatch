@@ -25,10 +25,14 @@ type ConsulWatched struct {
 var WaitTimeout = 10 * time.Minute
 var watchers = make([]*ConsulWatched, 1)
 
+var (
+	ErrPrefix = errors.New("invalid prefix")
+)
+
 func (w *ConsulWatched) Watch() error {
 	// Check prefix format
 	if w.Prefix == "" {
-		return errors.New("invalid Prefix")
+		return ErrPrefix
 	}
 
 	if w.Prefix[len(w.Prefix)-1] != '/' {
