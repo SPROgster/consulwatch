@@ -8,7 +8,7 @@ consulwatch is a Go library for watching [Consul](https://www.consul.io) KV valu
 Standard `go get`:
 
 ```
-$ go get github.com/mitchellh/consulstructure
+$ go get github.com/SPROgster/consulwatch
 ```
 
 ## Usage & Example
